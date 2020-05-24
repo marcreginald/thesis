@@ -1,0 +1,61 @@
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a href="#">
+
+            <h3><img src="images/tesda.png" alt="Cool Admin" width="50px" /> Tesda AGNOR
+            </h3>
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li class="{{#if active.dashboard}}active{{/if}} has-sub">
+                    <a class="js-arrow" href="/dashboard">
+                        <i class="fas fa-tachometer-alt"></i>DASHBOARD</a>
+                </li>
+                <li class="{{#if active.certificates}}active{{/if}}">
+                    <a href="/certificate-holder">
+                        <i class="fas fa-certificate"></i>CERTIFICATE HOLDER</a>
+                </li>
+                <li class="{{#if active.students}}active{{/if}}">
+                    <a href="/students">
+                        <i class="fas fa-users"></i>STUDENTS</a>
+                </li>
+                <li class="{{#if active.schools}}active{{/if}}">
+                    <a href="/AssessmentCenters">
+                        <i class="fas fa-building"></i>TESDA ACCREDITED ASSESSMENT CENTERS</a>
+                </li>
+                <li class="{{#if active.nc}}active{{/if}}">
+                    <a href="/nc">
+                        <i class="fas fa-wrench"></i>ASSESSMENT AND CERTIFICATION</a>
+                </li>
+                <li class="{{#if active.users}}active{{/if}}">
+                    <a href="/users-profile">
+                        <i class="fas fa-user"></i>USERS</a>
+                </li>
+                <li class="{{#if active.reports}}active{{/if}} has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-bar-chart-o"></i>REPORTS</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="/reports">Report 1</a>
+                        </li>
+                        <li>
+                            <a href="index2.html">Report 2</a>
+                        </li>
+                        <li>
+                            <a href="index3.html">Report 3</a>
+                        </li>
+                        <li>
+                            <a href="index4.html">Report 4</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->

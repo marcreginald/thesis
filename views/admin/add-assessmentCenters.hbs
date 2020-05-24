@@ -1,0 +1,86 @@
+{{> admin/head}}
+
+<body class="animsition">
+    <div class="page-wrapper">
+
+
+        {{> admin/sidebar}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {{> admin/navbar}}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Tesda Accredited Assessment Centers</strong>
+                            <small> Form</small>
+                        </div>
+                        <div class="card-body card-block">
+                            {{#if errorMessage}}
+                            <div class="alert alert-danger" role="alert">
+                                {{errorMessage}}
+                            </div>
+                            {{/if}}
+                            <form action="/AssessmentCenters-add" method="POST" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="centerName" class=" form-control-label">Center Name</label>
+                                    <input type="text" id="centerName" name="centerName" placeholder="Enter Center Name"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="region" class=" form-control-label">Region</label>
+                                    <select name="region" id="region" class="form-control">
+                                        <option value="0">Select region</option>
+                                        <option value="1">Region XIII - CARAGA</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="province" class=" form-control-label">Province</label>
+                                    <select name="province" id="province" class="form-control">
+                                        <option value="0">Select status</option>
+                                        <option value="1">Agusan del Norte</option>
+                                        <option value="2">Agusan del Sur</option>
+                                        <option value="3">Dinagat Islands</option>
+                                        <option value="4">Surigao del Norte</option>
+                                        <option value="5">Surigao del Sur</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class=" form-control-label">Address</label>
+                                    <input type="text" id="address" name="address" placeholder="Enter Address"
+                                        class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Submit
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Reset
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+
+                    </div>
+                    <br />
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+    </div>
+
+    {{> admin/footer}}

@@ -1,0 +1,110 @@
+{{> admin/head}}
+
+<body class="animsition">
+    <div class="page-wrapper">
+
+
+        {{> admin/sidebar}}
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {{> admin/navbar}}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+
+
+
+
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- DATA TABLE -->
+                                <div class="table-data__tool">
+                                    <div class="table-data__tool-left">
+                                        <h3 class="title-5 m-b-35">TESDA ACCREDITED ASSESSMENT CENTERS</h3>
+                                    </div>
+
+                                    <div class="table-data__tool-right">
+                                        <a href="/add-AssessmentCenters">
+                                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                                                <i class="zmdi zmdi-plus"></i>Add Assessment Centers</button>
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="table-responsive table-responsive-data2">
+                                    <table class="table table-data2">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                </th>
+                                                <th>Center Name</th>
+                                                <th>Region</th>
+                                                <th>Province</th>
+                                                <th>Address</th>
+
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        {{#each assessmentCenter}}
+                                        <tbody>
+                                            <tr class="tr-shadow">
+                                                <td>
+                                                    <label class="au-checkbox">
+                                                        <input type="checkbox">
+                                                        <span class="au-checkmark"></span>
+                                                    </label>
+                                                </td>
+                                                <td>{{centerName}}</td>
+                                                <td>{{region}}</td>
+                                                <td>{{province}}</td>
+                                                <td>{{address}}</td>
+                                                <td>
+                                                    <div class="table-data-feature">
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Qualifications">
+                                                            <i class="zmdi zmdi-menu"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Edit">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+
+                                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                            title="Delete">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        {{/each}}
+                                    </table>
+                                </div>
+                                <!-- END DATA TABLE -->
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2018 Group28. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    {{> admin/footer}}

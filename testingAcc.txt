@@ -1,0 +1,17 @@
+1	Marc	Panaligan	marcpanaligan	marcpanaligan98@gmail.com	$2a$12$5yMihX6xggSWc6KwkzFC..MSVWZ/GplgE2kXlMrTi7lN7HPvvGENO	Admin		0000-00-00 00:00:00	2020-05-12 19:21:21	0000-00-00 00:00:00
+
+
+
+in the certificate fuctionality i select nako sa dropdown ang 
+student tapos ang mga information nya mo display tapos sa schema
+naka save na didto ang information tapos ang i add nalang or ang i 
+relate nalang is ang centerId.
+
+approach 2
+
+igo nalang sha i change ang status to passed then ma transfer na 
+ang data didto sa certificate na page with all the information
+
+but the blockers is ang mga foreign keys.
+
+task needs to be done asap. associations/Relationships
