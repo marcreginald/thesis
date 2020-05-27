@@ -2,7 +2,9 @@ const bcrypt = require('bcryptjs');
 const User = require('../model/userModel'); 
 const studentModel = require('../model/studentModel');
 const { validationResult } = require('express-validator/check');
-const { Op } = require("sequelize");
+const assessmentCentersModel = require('../model/assessmentCentersModel');
+const specializationModel = require('../model/ncModel');
+const sequelize = require('../config/database');
 
 exports.getDashboard = async(req, res, next) => {
 
@@ -20,7 +22,96 @@ exports.getDashboard = async(req, res, next) => {
         }
     })
 
+    
     try {
+
+            // let specId = await specializationModel.findAll({attributes: ['id']});
+
+            var spec = await specializationModel.findAll({attributes: ['id']}); 
+            var specArr = spec;
+            var obj = JSON.parse(JSON.stringify(specArr));
+            // here I get the values of the obj 
+            var value = Object.values(obj);
+
+            // console.log(value);
+            // here I map the value to find the id of spec
+            var data = value.map((item) => {
+                var specId = [item.id];
+                return specId;
+            })
+            // console.log(data);
+  
+            let specializationId = data;
+            var specArray =  await studentModel.findAll({were: {specializationId: specializationId}, attributes: ['nc', 'specializationId']});
+            var stringifyArr = JSON.parse(JSON.stringify(specArray))
+            // console.log(stringifyArr);
+
+            var cntArr = await studentModel.findAll({
+                attributes: ['nc', [sequelize.fn('COUNT', sequelize.col('nc')), 'specializationId']],
+                group: 'nc',
+                raw: 'true'
+            })
+            
+            var ranked = cntArr.map((item, i) => {
+                if(i > 0){
+                    var prevItem = cntArr[i - 1];
+                    if(prevItem.specializationId == item.specializationId){
+                        item.rank = prevItem.rank
+                    }
+                    else{
+                        item.rank = i + 1;
+                    }
+                }
+                else{
+                    item.rank = 1;
+                }
+                return item;
+            })
+            // console.log(ranked);
+
+
+            var assesmentCenter = await assessmentCentersModel.findAll({attributes: ['id']});
+            var assessmentCenterArr = assesmentCenter;
+            var assessmentObj = JSON.parse(JSON.stringify(assessmentCenterArr));
+            // here I get the values of the obj 
+            var assessmentValue = Object.values(assessmentObj);
+
+            // console.log(value);
+            // here I map the value to find the id of spec
+            var assessmentCenterData = assessmentValue.map((item) => {
+                var specId = [item.id];
+                return specId;
+            })
+
+            
+            let assessmentCenterId = assessmentCenterData;
+            var assessmentCenterArray =  await studentModel.findAll({were: {assessmentCenterId: assessmentCenterId}, attributes: ['school', 'assessmentCenterId']});
+            var stringifyArr = JSON.parse(JSON.stringify(assessmentCenterArray))
+            
+            var cntAssessmentCenterArr = await studentModel.findAll({
+                attributes: ['school', [sequelize.fn('COUNT', sequelize.col('school')), 'assessmentCenterId']],
+                group: 'school',
+                raw: 'true'
+            })
+
+            var assessCenterRanked = cntAssessmentCenterArr.map((item, i) => {
+                if(i > 0){
+                    var prevItem = cntAssessmentCenterArr[i - 1];
+                    if(prevItem.assessmentCenterId == item.assessmentCenterId){
+                        item.rank = prevItem.rank
+                    }
+                    else{
+                        item.rank = i + 1;
+                    }
+                }
+                else{
+                    item.rank = 1;
+                }
+                return item;
+            })
+
+        var specRank = await ranked;
+        var assesmentRank = await assessCenterRanked;
 
        const users = await User.findOne({
             attributes: [
@@ -38,6 +129,8 @@ exports.getDashboard = async(req, res, next) => {
                 students: student,
                 drop: dropped,
                 pass: passed,
+                topNc: specRank,
+                topSchool: assesmentRank,
                 title: 'Dashboard',
                 path: '/dashboard',
                 active: {dashboard:true}
