@@ -21,7 +21,7 @@
     "express-session": "^1.17.1",
     "express-validator": "^6.4.1",
     "mysql2": "^2.1.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "nodemon": "^2.0.3",
     "path": "^0.12.7",
